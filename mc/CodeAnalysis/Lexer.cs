@@ -1,7 +1,7 @@
 namespace Minsk.CodeAnalysis
 {
     // The Lexer/Tokenizer splits the Input(String) -> SyntaxTokens
-    class Lexer
+    internal sealed class Lexer
     {
         private readonly string _text;
         private int _position;
@@ -33,7 +33,7 @@ namespace Minsk.CodeAnalysis
         {
             if (_position >= _text.Length)
             {
-                return new SyntaxToken(SyntaxKind.EOF, _position, "\0", null);
+                return new SyntaxToken(SyntaxKind.EOFToken, _position, "\0", null);
             }    
 
             // Token is Digit 0-9

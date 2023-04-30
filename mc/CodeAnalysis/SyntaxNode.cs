@@ -1,7 +1,7 @@
 namespace Minsk.CodeAnalysis
 {
     // Base type for our SyntaxNodes
-    abstract class SyntaxNode
+    public abstract class SyntaxNode
     {
         public abstract SyntaxKind Kind { get; }
 
