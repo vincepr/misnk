@@ -1,5 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-
+﻿// https://www.youtube.com/watch?v=3XM9vUGduhk&list=PLRAdsfhKI4OWNOSfS7EUu5GRAVmze1t2y&index=2
+// 13:50
 using Minsk.CodeAnalysis;
 
 namespace Minsk
