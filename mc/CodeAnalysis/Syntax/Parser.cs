@@ -1,4 +1,4 @@
-namespace Minsk.CodeAnalysis
+namespace Minsk.CodeAnalysis.Syntax
 {
     // The Parser produces the Tree of our programm. Connecting the SyntaxTokens together to logical constructs
     internal sealed class Parser

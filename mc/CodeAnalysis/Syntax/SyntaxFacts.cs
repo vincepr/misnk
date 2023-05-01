@@ -1,4 +1,4 @@
-namespace Minsk.CodeAnalysis
+namespace Minsk.CodeAnalysis.Syntax
 {
     // Stores information about the Syntax and how to parse and with what priority
     internal static class SyntaxFacts

@@ -1,4 +1,4 @@
-namespace Minsk.CodeAnalysis
+namespace Minsk.CodeAnalysis.Syntax
 {
     // The "node-types" in our Tree that map to keywords, identifiers etc...
     public sealed class SyntaxToken : SyntaxNode

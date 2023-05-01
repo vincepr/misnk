@@ -1,4 +1,4 @@
-namespace Minsk.CodeAnalysis
+namespace Minsk.CodeAnalysis.Syntax
 {
     // The Lexer/Tokenizer splits the Input(String) -> SyntaxTokens
     internal sealed class Lexer
