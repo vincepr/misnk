@@ -1,9 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-
+﻿// https://www.youtube.com/watch?v=3XM9vUGduhk&list=PLRAdsfhKI4OWNOSfS7EUu5GRAVmze1t2y&index=2
+// 13:50
 using Minsk.CodeAnalysis;
+using Minsk.CodeAnalysis.Syntax;
 
 namespace Minsk
 {
+    
     // 1 + 2 * 3
     // gets parsed into a treel like:
     //
@@ -13,16 +15,15 @@ namespace Minsk
     //     / \
     //    2   3
 
-    internal class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             Console.WriteLine("#showTree : to enable parse-tree information");
             Console.WriteLine("#cls : clear the Terminal");
             bool showTree = false;
             while (true)
             {
-                var oldColor = Console.ForegroundColor;
                 // get input
                 Console.Write("> ");
                 var line = Console.ReadLine();
@@ -49,7 +50,7 @@ namespace Minsk
                 {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 PrettyPrint(syntaxTree.Root);
-                Console.ForegroundColor = oldColor;
+                Console.ResetColor();
                 }
 
                 // print diagnostics OR result
@@ -58,7 +59,7 @@ namespace Minsk
                     Console.ForegroundColor = ConsoleColor.Red;
                     foreach (var d in syntaxTree.Diagnostics)
                         Console.WriteLine(d);
-                    Console.ForegroundColor = oldColor;
+                    Console.ResetColor();
                 }
                 else
                 {
