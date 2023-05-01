@@ -6,7 +6,7 @@ namespace Minsk.CodeAnalysis
         BadToken,
         EOFToken,
         WhitespaceToken,
-        NumberToken,        // i32 at the moment
+        NumberToken,        // represents i32 at the moment
 
         // Operators
         PlusToken,
