@@ -18,11 +18,19 @@ namespace Minsk.CodeAnalysis
 
         private int EvaluateExpression(ExpressionSyntax node)
         {
-            // BinaryExpression
-            // NumberExpression
             if (node is LiteralExpressionSyntax n)
                 return (int) n.LiteralToken.Value;   // asserting int -> can only call this when parsing was success
+            if (node is UnaryExpressionSyntax u)
+                {
+                    var operand = EvaluateExpression(u.Operand);
 
+                    if (u.OperatorToken.Kind == SyntaxKind.PlusToken)
+                        return operand;
+                    if (u.OperatorToken.Kind == SyntaxKind.MinusToken)
+                        return -operand;
+                    else
+                        throw new Exception($"Unexpected UnaryOperator '{u.OperatorToken.Kind}' , in Evaluator.EvaluateExpression()");
+                }
             if (node is BinaryExpressionSyntax b)
             {
                 var left = EvaluateExpression(b.Left);

@@ -19,6 +19,7 @@ namespace Minsk.CodeAnalysis
         // Expressions
         LiteralExpression,
         BinaryExpression,
-        ParenthesizedExpressionSyntax
+        ParenthesizedExpressionSyntax,
+        UnaryExpression
     }
 }

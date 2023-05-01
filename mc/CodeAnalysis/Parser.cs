@@ -61,7 +61,15 @@ namespace Minsk.CodeAnalysis
 
         // to the order in wich ParseXxxs and make Them have Priority over eachother (! > * > +- ...)
         private ExpressionSyntax ParseExpression(int parentPrecedence = 0){
-            var left = ParsePrimaryExpression();
+            ExpressionSyntax left;
+            var unaryOperatorPrecedence = Current.Kind.GetUnaryOperatorPrecedence();
+            if (unaryOperatorPrecedence != 0 && unaryOperatorPrecedence >= parentPrecedence){
+                var operatorToken = NextToken();
+                var operand = ParseExpression(unaryOperatorPrecedence);
+                left = new UnaryExpressionSyntax(operatorToken, operand);
+            } else {
+                left = ParsePrimaryExpression();
+            }
 
             while (true){
                 var precedence = Current.Kind.GetBinaryOperatorPrecedence();
@@ -70,7 +78,6 @@ namespace Minsk.CodeAnalysis
                 var operatorToken = NextToken();
                 var right = ParseExpression(precedence);
                 left = new BinaryExpressionSyntax(left, operatorToken, right);
-
             }
             return left;
         }
