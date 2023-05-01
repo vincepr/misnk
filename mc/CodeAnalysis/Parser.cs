@@ -64,7 +64,7 @@ namespace Minsk.CodeAnalysis
             var left = ParsePrimaryExpression();
 
             while (true){
-                var precedence = GetBinaryOperatorPrecedence(Current.Kind);
+                var precedence = Current.Kind.GetBinaryOperatorPrecedence();
                 if (precedence == 0 || precedence <= parentPrecedence)
                     break;
                 var operatorToken = NextToken();
@@ -73,21 +73,6 @@ namespace Minsk.CodeAnalysis
 
             }
             return left;
-        }
-
-        private static int GetBinaryOperatorPrecedence(SyntaxKind kind){
-            switch (kind){
-                // higher nr gets parsed with priority
-                case SyntaxKind.MultiplicationToken:
-                case SyntaxKind.DivideToken:
-                    return 2;
-                case SyntaxKind.PlusToken:
-                case SyntaxKind.MinusToken:
-                    return 1;
-
-                default:
-                    return 0;       // while Precedence==0 -> no Binary Operator
-            }
         }
 
         // numbers (later probably booleans etc.)
