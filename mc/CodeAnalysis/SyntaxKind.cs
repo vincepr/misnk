@@ -1,16 +1,5 @@
 namespace Minsk.CodeAnalysis
 {
-    // 1 + 2 * 3
-    // gets parsed into a treel like:
-    //
-    //    +
-    //   / \
-    //  1   *
-    //     / \
-    //    2   3
-
-
-
     public enum SyntaxKind
     {   
         // Tokens:
@@ -28,7 +17,7 @@ namespace Minsk.CodeAnalysis
         CloseParenthesisToken,
 
         // Expressions
-        NumberExpression,
+        LiteralExpression,
         BinaryExpression,
         ParenthesizedExpressionSyntax
     }

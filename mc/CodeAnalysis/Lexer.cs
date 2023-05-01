@@ -61,19 +61,23 @@ namespace Minsk.CodeAnalysis
             }
 
             // arithmetic operators + - * / ( )
-            if (Current == '+')
-                return new SyntaxToken(SyntaxKind.PlusToken, _position++, "+", null);
-            if (Current == '-')
-                return new SyntaxToken(SyntaxKind.MinusToken, _position++, "-", null);
-            if (Current == '/')
-                return new SyntaxToken(SyntaxKind.DivideToken, _position++, "/", null);
-            if (Current == '*')
-                return new SyntaxToken(SyntaxKind.MultiplicationToken, _position++, "*", null);
-            if (Current == '(')
-                return new SyntaxToken(SyntaxKind.OpenParenthesisToken, _position++, "(", null);
-            if (Current == ')')
-                return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
+            switch (Current)
+            {
+                case '+':
+                    return new SyntaxToken(SyntaxKind.PlusToken, _position++, "+", null);
+                case '-':
+                    return new SyntaxToken(SyntaxKind.MinusToken, _position++, "-", null);
+                case '/':
+                    return new SyntaxToken(SyntaxKind.DivideToken, _position++, "/", null);
+                case '*':
+                    return new SyntaxToken(SyntaxKind.MultiplicationToken, _position++, "*", null);
+                case '(':
+                    return new SyntaxToken(SyntaxKind.OpenParenthesisToken, _position++, "(", null);
+                case ')':
+                    return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
+            }
 
+            // badtoken default case:
             _diagnostics.Add($"ERROR: bad character input: '{Current}' in Lexer.NextToken()");
             return new SyntaxToken(SyntaxKind.BadToken, _position++, _text.Substring(_position - 1,1), null);
         }
